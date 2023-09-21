@@ -57,10 +57,10 @@ fetch(apiUrl)
       filtreObjet = document.querySelector(".filter-2")
       filtreObjet.addEventListener("click", () => {         
    
-         const filterPieces = data.filter((piece) => piece.category.name === "Objets");
+         const filteredPieces = data.filter((piece) => piece.category.name === "Objets");
       
       // Affiche les travaux filtrés
-      displayElements(filterPieces);
+      displayElements(filteredPieces);
 
 });
 
@@ -69,10 +69,10 @@ fetch(apiUrl)
          filtreAppartements = document.querySelector(".filter-3")
       filtreAppartements.addEventListener("click", () => {         
    
-         const filterPieces = data.filter((piece) => piece.category.name === "Appartements");
+         const filteredPieces = data.filter((piece) => piece.category.name === "Appartements");
       
       // Affiche les travaux filtrés
-      displayElements(filterPieces);
+      displayElements(filteredPieces);
   });
 
                         // Filtre Hotels & restaurants //
@@ -80,10 +80,10 @@ fetch(apiUrl)
       filtreHotel = document.querySelector(".filter-4")
       filtreHotel.addEventListener("click", () => {         
    
-         const filterPieces = data.filter((piece) => piece.category.name === "Hotels & restaurants");
+         const filteredPieces = data.filter((piece) => piece.category.name === "Hotels & restaurants");
       
       // Affiche les travaux filtrés
-      displayElements(filterPieces);
+      displayElements(filteredPieces);
 
 });
 });

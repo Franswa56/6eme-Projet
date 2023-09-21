@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background-color: #FFFEF8;
 }
 header {
 	display: flex;
@@ -60,6 +61,11 @@ header {
 }
 section {
 	margin: 50px 0
+}
+
+ul a {
+	text-decoration: none;
+	color: black;
 }
 
 h1{
@@ -125,6 +131,33 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.filter-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 51px;
+	margin-top: 21px;
+	gap: 10px;
+}
+
+.filter-1, .filter-2, .filter-3, .filter-4 {
+	font-weight: 700;
+	font-size: 16px;
+	color: #1D6154;
+	background-color: #FFFEF8;
+	font-family: "syne";
+	padding: 10px;
+	border: #1D6154 1px solid;
+	border-radius: 25px;
+	transition: all 200ms ease-in-out;
+}
+
+.filter-1:hover, .filter-2:hover, .filter-3:hover, .filter-4:hover {
+	background-color: #1D6154;
+	color: #FFFEF8;
+	cursor: pointer;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -185,4 +218,62 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+
+                 /* Page de connexion */
+
+.form-title {
+	color: #1D6154;
+	text-align: center;
+	font-weight: 700;
+	font-size: 30px;
+	margin-bottom: 60px;
+}
+
+.form-connexion {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 30px;
+
+}
+
+.form-label {
+	font-size: 14px;
+}
+
+.form-element {
+
+	width: 379px;
+	height: 50px;
+	border: none;
+	box-shadow: rgba(0, 0, 0, .05) 2px 6px 6px;
+}
+
+.form-button {
+	height: 36px;
+	width: 179px;
+	background-color: #1D6154;
+	border-radius: 60px;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: #FFFF;
+	border: none;
+}
+
+.form-button:hover {
+	cursor: pointer;
+}
+
+.form-lien {
+	color: black;
+}
+
+
+
 

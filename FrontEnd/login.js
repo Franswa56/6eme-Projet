@@ -1,7 +1,9 @@
  ////////////////////////////  Connexion Utilisateur ////////////////////////////////////
 
 
- document.querySelector('.form-connexion').addEventListener('submit', function(event) {
+ const formulaire = document.querySelector('.form-connexion')
+
+ formulaire.addEventListener('submit', function(event) {
     // Empechement du rechargement
     event.preventDefault();
     
@@ -26,6 +28,7 @@
             // Garde le token et redirige l'utilisateur
             localStorage.setItem('authToken', data.token);
             window.location.href = 'index.html';
+            
         } else {
             // message d'identifiants incorrects
             alert('E-mail ou mot de passe incorrect.');

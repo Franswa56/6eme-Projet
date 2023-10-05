@@ -60,5 +60,40 @@ const addButton = document.querySelector(".modal-button");
 addButton.addEventListener("click",()=> {
    firstModal.style.display = "none";
    secondModal.style.display = "flex";
-})
+});
 
+             // click sur Ajouter une image //
+
+const clickButton = document.querySelector(".add-pics-button")
+const inputButton = document.querySelector(".add-pics-input")
+
+clickButton.addEventListener("click",() => {
+   inputButton.click();
+});
+
+            // Ajout dynamique des catégories du formulaire //
+
+
+ fetch(apiUrl)
+
+   .then(response => {
+      return response.json();
+})
+   .then(data => {
+      fillDropdown(data)
+   })
+
+
+function fillDropdown(data) {
+
+   const selectElement = document.querySelector('.form-element');
+   
+   data.forEach(item => {
+       const option = document.createElement('option');
+       option.value = item.category.id;
+       option.textContent = item.category.name;
+       selectElement.appendChild(option);
+
+       console.log(data)
+   });
+}

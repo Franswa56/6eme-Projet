@@ -48,7 +48,8 @@ table {
 }
 /** end reset css**/
 body {
-	background-color: #FFFEF8; 
+	background-color: #FFFEF8;
+	height: 100vh; 
 
 }
 
@@ -60,6 +61,10 @@ body {
 	background-color: #FFFEF8;
 }
 
+header {
+	padding-top: 30px;
+}
+
 .edit {
 	background-color: black;
 	width: 100vw;
@@ -68,6 +73,8 @@ body {
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
+	position: fixed;
+	top: 0;
 	
 }
 
@@ -198,7 +205,9 @@ body {
 	flex-direction: column;
 	align-items: center;
 	border-radius: 3px;
+	margin-bottom: 30px;
 }
+
 
 .add-pics-logo {
 	color: #B9C5CC;
@@ -218,7 +227,11 @@ body {
 	color: #306685;
 	background-color: #CBD6DC;
 	border: none;
+	cursor: pointer;
 
+}
+.add-pics-input {
+	display: none;
 }
 
 header {
@@ -419,6 +432,7 @@ footer nav ul {
 	font-size: 14px;
 	font-family: 'Work sans';
 	font-weight: 500;
+	margin-bottom: 5px;
 }
 
 .form-element {
@@ -427,6 +441,7 @@ footer nav ul {
 	height: 50px;
 	border: none;
 	box-shadow: rgba(0, 0, 0, .05) 2px 6px 6px;
+	background-color: white;
 }
 
 .form-button {

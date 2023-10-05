@@ -60,43 +60,41 @@ body {
 	background-color: #FFFEF8;
 }
 
-.modify {
+.edit {
 	background-color: black;
 	width: 100vw;
 	height: 59px;
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
-	display: none;
 	
 }
 
-.modify-button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
-	height: auto;
-	width: auto;
-	background-color: black;
-	border: none;
-
-}
-
-.modify-button:hover {
-	cursor: pointer;
-}
-
-.modify-icon {
+.edit-icon {
 	color: white;
 	font-weight: 100;
 }
 
-.modify-text {
+.edit-text {
 	color: white;
 	font-family: 'Work Sans';
 	font-size: 16px;
+}
+
+.modify {
+	display: none;
+	margin-left: 30px;
+	cursor: pointer;
+}
+
+.modify-icon {
+	display: inline;
+}
+
+.modify-text {
+	display: inline;
+	font-family: 'work sans';
 }
 
 .modal {
@@ -118,6 +116,13 @@ body {
 	align-items: center;	
 	background-color: #FFFFFF;
 	border-radius: 10px;
+}
+
+.modal-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;	
+	background-color: #FFFFFF;
 }
 
 .modal-close {
@@ -144,6 +149,7 @@ body {
 	flex-wrap: wrap;
 	padding: 105px;
 	padding-top: 49px;
+	padding-bottom: 67px;
 	justify-content: space-between;
 	row-gap: 30px;
 	
@@ -152,6 +158,15 @@ body {
 .modal img {
 	width: 75px;
 	height: 100px;
+}
+
+.modal-bar {
+	color: #B3B3B3;
+	width: 420px;
+	height: 0px;
+	border: 1px solid #B3B3B3;
+	margin-top: 0px;
+	margin-bottom: 38px;
 }
 
 .modal-button {
@@ -164,6 +179,46 @@ body {
 	border: none;
 	border-radius: 25px;
 	width: 237px;
+	cursor: pointer;
+}
+
+.second-modal-container {
+	display: none;
+	flex-direction: column;
+	align-items: center;	
+	background-color: #FFFFFF;
+}
+
+.add-pics {
+	width: 420px;
+	height: 170px;
+	background-color: #E8F1F6;
+	margin-top: 36px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 3px;
+}
+
+.add-pics-logo {
+	color: #B9C5CC;
+    font-size: 70px;
+	text-align: center;
+	margin-top: 23px;
+}
+
+.add-pics-button {
+	border-radius: 50px;
+	margin-top: 5px;
+	width: 200px;
+	height: 36px;
+	font-family: 'Work sans';
+	font-size: 14px;
+	font-weight: 550;
+	color: #306685;
+	background-color: #CBD6DC;
+	border: none;
+
 }
 
 header {
@@ -239,9 +294,14 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+#portfolio {
+	text-align: center;
+}
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+	display: inline;
 }
 
 .filter-container {
@@ -357,6 +417,8 @@ footer nav ul {
 
 .form-label {
 	font-size: 14px;
+	font-family: 'Work sans';
+	font-weight: 500;
 }
 
 .form-element {
@@ -384,6 +446,8 @@ footer nav ul {
 
 .form-lien {
 	color: black;
+	font-family: 'Work sans';
+	font-size: 14px;
 }
 
 

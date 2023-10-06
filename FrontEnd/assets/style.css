@@ -81,6 +81,7 @@ header {
 .edit-icon {
 	color: white;
 	font-weight: 100;
+
 }
 
 .edit-text {
@@ -162,6 +163,20 @@ header {
 	
 }
 
+.image-container {
+	position: relative;
+}
+
+.delete-icone {
+	position: absolute;
+	z-index: 1;
+	transform: translateX(-20px);
+	color: white;
+	background-color: black;
+	padding: 2px;
+	cursor: pointer;
+}
+
 .modal img {
 	width: 75px;
 	height: 100px;
@@ -232,6 +247,24 @@ header {
 }
 .add-pics-input {
 	display: none;
+}
+
+.add-work-button {
+	font-weight: 600;
+	font-size: 16px;
+	color:  #FFFEF8;
+	background-color: #1D6154;
+	font-family: "syne";
+	padding: 10px;
+	border: none;
+	border-radius: 25px;
+	width: 237px;
+	cursor: pointer;
+}
+
+.add-work-button:disabled {
+	background-color: #A7A7A7;
+	cursor: not-allowed;
 }
 
 header {
@@ -405,6 +438,11 @@ footer nav ul {
 }
 
                  /* Page de connexion */
+
+.modal-form {
+	margin-bottom: 17px;
+
+}
 
 .form-title {
 	color: #1D6154;

@@ -1,18 +1,28 @@
 function displayElements(elements) {
-    modalGallery.innerHTML = "";
-    elements.forEach(element => {
- 
-       
-       // Crée un nouvel élément "img" pour la photo
-       const image = document.createElement("img")
-       image.src = element.imageUrl;
-       image.alt = element.title;             
- 
-       // Ajoute l'élément "article" à la div "gallery"
-       modalGallery.appendChild(image)      
- });
- }
+   modalGallery.innerHTML = "";
+   elements.forEach(element => {
 
+       // Crée une div pour contenir l'image et l'icône
+       const container = document.createElement("div");
+       container.className = "image-container"; // Vous pouvez ajouter une classe pour styler le conteneur si nécessaire
+
+       // Crée un nouvel élément "img" pour la photo
+       const image = document.createElement("img");
+       image.src = element.imageUrl;
+       image.alt = element.title;
+
+       // Crée une icône
+       const icone = document.createElement("i");
+       icone.className = "fa-solid fa-trash-can  delete-icone";
+
+       // Ajoute l'image et l'icône à la div conteneur
+       container.appendChild(image);
+       container.appendChild(icone);
+
+       // Ajoute le conteneur à la div "modal-gallery"
+       modalGallery.appendChild(container);   
+   });
+}
 
 // Sélection de la div avec la classe "gallery"
 const modalGallery = document.querySelector(".modal-gallery");
@@ -71,29 +81,54 @@ clickButton.addEventListener("click",() => {
    inputButton.click();
 });
 
-            // Ajout dynamique des catégories du formulaire //
+            //Verification du formulaire pour dégriser le bouton//
 
+const photo = document.querySelector(".add-pics-input");
+const title = document.getElementById("title");
+const category = document.getElementById("category")
+const addWorkButton = document.querySelector(".add-work-button")
 
- fetch(apiUrl)
-
-   .then(response => {
-      return response.json();
-})
-   .then(data => {
-      fillDropdown(data)
-   })
-
-
-function fillDropdown(data) {
-
-   const selectElement = document.querySelector('.form-element');
-   
-   data.forEach(item => {
-       const option = document.createElement('option');
-       option.value = item.category.id;
-       option.textContent = item.category.name;
-       selectElement.appendChild(option);
-
-       console.log(data)
-   });
+function checkForm () {
+   if (photo.value && title.value && category.value) {
+      addWorkButton.disabled = false;
+   } else {
+      addWorkButton.disabled = true;
+   }  
 }
+
+checkForm()
+
+photo.addEventListener("input", checkForm)
+title.addEventListener("input", checkForm)
+category.addEventListener("input", checkForm)
+
+
+            //Envoie du nouveau travail a l'API//
+function getWorkInfo() {
+
+   const formulaireNewWork = document.querySelector(".modal-form");
+   formulaireNewWork.addEventListener("submit", function (event)  {
+      event.preventDefault();
+
+// Création de l'objet du nouveau travail
+
+   const newWork = {
+      imageUrl: event.target.querySelector("[name=upfile]").value,
+      title: event.target.querySelector("[name=title]").value,
+      name: event.target.querySelector("[name=category").value
+};
+
+// Conversion en Json
+
+const chargeUtile = JSON.stringify(newWork);
+
+console.log(chargeUtile)
+
+fetch("http://localhost:5678/api-docs/works", {
+   method: "POST",
+   headers: {"content-Type": "application/json"},
+   body: chargeUtile
+})
+
+}
+)};

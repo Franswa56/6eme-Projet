@@ -31,12 +31,12 @@
         <div class="second-modal-container">
           <p class="modal-close">X</p>
           <p class="modal-title">Ajout photo</p>
-          <div class="add-pics">
-            <i class="fa-regular fa-image add-pics-logo"></i>
-            <button class="add-pics-button">+ Ajouter une photo</button>
-            <input type="file" name="upfile" class="add-pics-input" />
-          </div>
-          <form>
+          <form class="modal-form" method="POST" enctype="multipart/form-data" action="http://localhost:5678/api-docs/works">
+            <div class="add-pics">
+              <i class="fa-regular fa-image add-pics-logo"></i>
+              <button class="add-pics-button">+ Ajouter une photo</button>
+              <input type="file" name="upfile" class="add-pics-input" />
+            </div>
             <div class="form-container">
               <label for="title" class="form-label">Titre</label>
               <input type="text" class="form-element" id="title" name="title" />
@@ -44,13 +44,15 @@
             <div class="form-container">
               <label for="category" class="form-label">Catégorie</label>
               <select class="form-element" id="category" name="category">
-              <option value="" selected></option>
-              <option valeur="fr">Objets</option>
-              <option valeur="nl">Appartements</option>
-              <option valeur="en">Hôtels & restaurants</option>
+                <option value="" selected></option>
+                <option valeur="objets">Objets</option>
+                <option valeur="Appartements">Appartements</option>
+                <option valeur="Hôtels & restaurants">Hôtels & restaurants</option>
               </select>
             </div>
           </form>
+          <hr class="modal-bar" />
+          <button class="add-work-button" id="submitButton" disabled>Valider</button>
         </div>
       </div>
     </div>

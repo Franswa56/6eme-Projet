@@ -4,23 +4,23 @@ function displayElements(elements) {
 
        // Crée une div pour contenir l'image et l'icône
        const container = document.createElement("div");
-       container.className = "image-container"; // Vous pouvez ajouter une classe pour styler le conteneur si nécessaire
+       container.className = "image-container"; 
 
        // Crée un nouvel élément "img" pour la photo
        const image = document.createElement("img");
        image.src = element.imageUrl;
        image.alt = element.title;
 
-       // Crée une icône
+       /*// Crée une icône
        const icone = document.createElement("i");
-       icone.className = "fa-solid fa-trash-can  delete-icone";
+       icone.className = "fa-solid fa-trash-can  delete-icone";*/
 
        // Ajoute l'image et l'icône à la div conteneur
-       container.appendChild(image);
-       container.appendChild(icone);
+       //container.appendChild(image);
+       //container.appendChild(icone);
 
        // Ajoute le conteneur à la div "modal-gallery"
-       modalGallery.appendChild(container);   
+       modalGallery.appendChild(image);   
    });
 }
 

@@ -31,10 +31,10 @@
         <div class="second-modal-container">
           <p class="modal-close">X</p>
           <p class="modal-title">Ajout photo</p>
-          <form class="modal-form" method="POST" enctype="multipart/form-data" action="http://localhost:5678/api-docs/works">
+          <form class="modal-form" method="post" enctype="multipart/form-data">
             <div class="add-pics">
               <i class="fa-regular fa-image add-pics-logo"></i>
-              <button class="add-pics-button">+ Ajouter une photo</button>
+              <button type="button" class="add-pics-button">+ Ajouter une photo</button>
               <input type="file" name="upfile" class="add-pics-input" />
             </div>
             <div class="form-container">
@@ -45,14 +45,14 @@
               <label for="category" class="form-label">Catégorie</label>
               <select class="form-element" id="category" name="category">
                 <option value="" selected></option>
-                <option valeur="objets">Objets</option>
-                <option valeur="Appartements">Appartements</option>
-                <option valeur="Hôtels & restaurants">Hôtels & restaurants</option>
+                <option value="1">Objets</option>
+                <option value="2">Appartements</option>
+                <option value="3">Hôtels & restaurants</option>
               </select>
             </div>
           </form>
           <hr class="modal-bar" />
-          <button class="add-work-button" id="submitButton" disabled>Valider</button>
+          <input type="submit" class="add-work-button" id="submitButton" value="Valider" disabled></input>
         </div>
       </div>
     </div>
@@ -93,10 +93,6 @@
             <div class="filter-4">Hôtels & restaurants</div>
           </div>
           <div class="gallery">
-            <figure>
-              <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina" />
-              <figcaption>Abajour Tahina</figcaption>
-            </figure>
             <figure>
               <img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V" />
               <figcaption>Appartement Paris V</figcaption>

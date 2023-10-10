@@ -1,4 +1,4 @@
-function displayElements(elements) {
+function displayModalElements(elements) {
    modalGallery.innerHTML = "";
    elements.forEach(element => {
 
@@ -11,16 +11,21 @@ function displayElements(elements) {
        image.src = element.imageUrl;
        image.alt = element.title;
 
-       /*// Crée une icône
+       // Crée une icône
        const icone = document.createElement("i");
-       icone.className = "fa-solid fa-trash-can  delete-icone";*/
+       icone.setAttribute("data-id", element.id);
+       icone.className = "fa-solid fa-trash-can delete-icone icone-" + element.id;
 
        // Ajoute l'image et l'icône à la div conteneur
-       //container.appendChild(image);
-       //container.appendChild(icone);
+       container.appendChild(image);
+       container.appendChild(icone);
 
        // Ajoute le conteneur à la div "modal-gallery"
-       modalGallery.appendChild(image);   
+       modalGallery.appendChild(container);
+
+       //Event listener pour la suppression (voir ligne 141)
+
+       icone.addEventListener('click', deleteWork);
    });
 }
 
@@ -39,7 +44,7 @@ fetch(apiUrl)
    .then(data => {
 
       // Affichage de touts les travaux 
-      displayElements(data);
+      displayModalElements(data);
    });
 
 
@@ -104,31 +109,77 @@ category.addEventListener("input", checkForm)
 
 
             //Envoie du nouveau travail a l'API//
-function getWorkInfo() {
 
-   const formulaireNewWork = document.querySelector(".modal-form");
-   formulaireNewWork.addEventListener("submit", function (event)  {
-      event.preventDefault();
 
 // Création de l'objet du nouveau travail
 
-   const newWork = {
-      imageUrl: event.target.querySelector("[name=upfile]").value,
-      title: event.target.querySelector("[name=title]").value,
-      name: event.target.querySelector("[name=category").value
-};
+function getFormData() {
+   const form = document.querySelector(".modal-form");
+   const formData = new FormData();
 
-// Conversion en Json
+   const fileInput = form.querySelector("[name=upfile]");
+   if (fileInput.files.length > 0) {
+       formData.append('image', fileInput.files[0]);
+   }
+   
+   formData.append('title', form.querySelector("[name=title]").value);
+   formData.append('category',form.querySelector("[name=category]").value); 
 
-const chargeUtile = JSON.stringify(newWork);
+   console.log(formData)
+   return formData;
 
-console.log(chargeUtile)
-
-fetch("http://localhost:5678/api-docs/works", {
-   method: "POST",
-   headers: {"content-Type": "application/json"},
-   body: chargeUtile
-})
-
+  
 }
-)};
+ 
+   document.getElementById("submitButton").addEventListener("click", function(event) {
+      event.preventDefault();
+      const data = getFormData();
+  
+      fetch("http://localhost:5678/api/works", {
+          method: "POST",
+          headers: {
+              'Authorization': `Bearer ${localStorage.getItem("authToken")}`
+          },
+          body: data
+      })
+      .then(response => {
+         if (!response.ok) {
+             return response.text().then(text => {
+                 console.log("Réponse du serveur:", text);
+                 throw new Error(`Server responded with status: ${response.status}`);
+             });
+         }
+         return response.json();
+     })
+      .then(data => {
+          console.log(data);
+          console.log("fichier envoyé");
+      })
+  });
+
+               //Suppression d'un Travail au click sur l'icone//
+              
+function deleteWork(event) {
+
+   event.preventDefault();
+ 
+// recupération de l'id du travail grace au data-id de l'icone
+   const workId = event.target.dataset.id
+
+// requête pour la suppression du travail et du token d'authenticication
+   fetch(`http://localhost:5678/api/works/${workId}`, {
+        method: 'DELETE',
+        headers: {
+         'Authorization': `Bearer ${localStorage.getItem("authToken")}`
+     }
+    })
+   
+    .then(response => {
+        if(response.ok) {
+            // Si la suppression a réussi, supprimez également l'élément du DOM
+            event.target.parentElement.remove();
+        } else {
+            console.error('Erreur lors de la suppression du travail', response.statusText);
+        }
+    })
+}

@@ -54,18 +54,33 @@ fetch(apiUrl)
    const editButton = document.querySelector(".modify");
    const modal = document.querySelector(".modal");
 
-   editButton.addEventListener("click",()=> {
+   editButton.addEventListener("click",(event)=> {
+    console.log("modalclick")
+    event.stopPropagation();
     modal.style.display = "flex";
     secondModal.style.display = "none";
     firstModal.style.display = "flex";
 });
               // Fermer la Modale //
+
+// grace a la croix
 const close = document.querySelectorAll(".modal-close");
 
 close.forEach((cross)=> {
 cross.addEventListener("click",()=> {
     modal.style.display = "none"
 });
+});
+
+// en cliquant a l'exterieur
+
+const modalWindow = document.querySelector(".modal-window")
+
+document.addEventListener("click", (event) => {
+
+    if (!modalWindow.contains(event.target)) {
+        modal.style.display = "none";
+    }
 });
              // passer sur la Modale 2 //
 
@@ -77,10 +92,45 @@ addButton.addEventListener("click",()=> {
    secondModal.style.display = "flex";
 });
 
+              // Retour sur Modale 1 //
+
+const returnButton = document.querySelector(".modal-return");
+
+returnButton.addEventListener("click",()=> {
+    firstModal.style.display = "flex";
+    secondModal.style.display = "none";
+ });
+
+
+
              // click sur Ajouter une image //
 
 const clickButton = document.querySelector(".add-pics-button")
 const inputButton = document.querySelector(".add-pics-input")
+const imagePreview = document.querySelector(".add-pics-preview");
+
+// Aperçu de l'image ajoutée et restriction taille de fichier 
+
+inputButton.addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        // Convertir la taille du fichier en Mo
+        const fileSizeInMB = file.size / (1024 * 1024);
+
+        if (fileSizeInMB > 4) {
+            alert('Le fichier est trop volumineux! Veuillez sélectionner un fichier de moins de 4 Mo.');
+            event.target.value = '';
+        }};
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = "block"; 
+        }
+        reader.readAsDataURL(file);
+    }
+
+});
 
 clickButton.addEventListener("click",() => {
    inputButton.click();
@@ -134,28 +184,28 @@ function getFormData() {
    document.getElementById("submitButton").addEventListener("click", function(event) {
       event.preventDefault();
       const data = getFormData();
-  
+
+// lecture du fichier pour l'aperçu de l'image
+
+// Aperçu de l'image
+const imagePreview = document.querySelector(".add-pics-preview");
+
+inputButton.addEventListener("change", function(event) {
+    console.log("File input changed");
+    // Ici, vous pouvez ajouter le code pour afficher l'aperçu de l'image
+});
+
+
+// Envoi du nouveau travail
+
       fetch("http://localhost:5678/api/works", {
           method: "POST",
           headers: {
               'Authorization': `Bearer ${localStorage.getItem("authToken")}`
           },
           body: data
-      })
-      .then(response => {
-         if (!response.ok) {
-             return response.text().then(text => {
-                 console.log("Réponse du serveur:", text);
-                 throw new Error(`Server responded with status: ${response.status}`);
-             });
-         }
-         return response.json();
-     })
-      .then(data => {
-          console.log(data);
-          console.log("fichier envoyé");
-      })
-  });
+});
+});
 
                //Suppression d'un Travail au click sur l'icone//
               
@@ -166,7 +216,7 @@ function deleteWork(event) {
 // recupération de l'id du travail grace au data-id de l'icone
    const workId = event.target.dataset.id
 
-// requête pour la suppression du travail et du token d'authenticication
+// requête pour la suppression du travail avec token d'authenticication
    fetch(`http://localhost:5678/api/works/${workId}`, {
         method: 'DELETE',
         headers: {
@@ -176,7 +226,7 @@ function deleteWork(event) {
    
     .then(response => {
         if(response.ok) {
-            // Si la suppression a réussi, supprimez également l'élément du DOM
+
             event.target.parentElement.remove();
         } else {
             console.error('Erreur lors de la suppression du travail', response.statusText);

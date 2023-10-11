@@ -131,14 +131,24 @@ header {
 	flex-direction: column;
 	align-items: center;	
 	background-color: #FFFFFF;
+	border-radius: 10px;
 }
 
 .modal-close {
 	font-family: 'Comic sans ms';
-	font-weight: 700;
-	font-size: 18px;
-	margin-top: 30px;
+	font-weight: 900;
+	font-size: 24px;
+	margin-top: 26px;
 	margin-left: 520px;
+	cursor: pointer;
+}
+
+.modal-return {
+	font-size: 26px;
+	position: absolute;
+	transform: translateX(-270px) translateY(25px);
+	cursor: pointer;
+	
 }
 
 .modal-close:hover {
@@ -170,14 +180,16 @@ header {
 .delete-icone {
 	position: absolute;
 	z-index: 1;
-	transform: translateX(-20px);
+	transform: translateX(-21px) translateY(5px);
+	border-radius: 2px;
 	color: white;
 	background-color: black;
-	padding: 2px;
+	padding: 4px;
 	cursor: pointer;
+	font-size: 10px;
 }
 
-.modal img {
+.modal-container img {
 	width: 75px;
 	height: 100px;
 }
@@ -231,6 +243,14 @@ header {
 	margin-top: 23px;
 }
 
+.add-pics-legend {
+	margin-top: 8px;
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 10px;
+	color: #444444;
+}
+
 .add-pics-button {
 	border-radius: 50px;
 	margin-top: 5px;
@@ -247,6 +267,15 @@ header {
 }
 .add-pics-input {
 	display: none;
+}
+
+.add-pics-preview {
+	display: none;
+	height: 170px;
+	position: absolute;
+	border-left: #E8F1F6 50px solid;
+	border-right: #E8F1F6 50px solid;
+	
 }
 
 .add-work-button {

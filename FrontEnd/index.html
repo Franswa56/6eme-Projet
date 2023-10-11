@@ -29,13 +29,16 @@
           <button class="modal-button">Ajouter une photo</button>
         </div>
         <div class="second-modal-container">
+          <i class="fa-solid fa-arrow-left modal-return"></i>
           <p class="modal-close">X</p>
           <p class="modal-title">Ajout photo</p>
           <form class="modal-form" method="post" enctype="multipart/form-data">
             <div class="add-pics">
               <i class="fa-regular fa-image add-pics-logo"></i>
               <button type="button" class="add-pics-button">+ Ajouter une photo</button>
-              <input type="file" name="upfile" class="add-pics-input" />
+              <img class="add-pics-preview" src="" alt="Aperçu de l'image">
+              <p class="add-pics-legend">jpg, png: 4mo max</p>
+              <input type="file" name="upfile" class="add-pics-input" accept=".jpg, .jpeg, .png"/>
             </div>
             <div class="form-container">
               <label for="title" class="form-label">Titre</label>

@@ -1,7 +1,7 @@
  // Fonction d'affichage dans la gallery //
 
  function displayElements(elements) {
-   console.log("Entering displayElements function")
+
    gallery.innerHTML = "";
    
    elements.forEach(element => {
@@ -31,14 +31,13 @@
 
 
 
-const apiUrl = 'http://localhost:5678/api/works';
+const apiWorksUrl = 'http://localhost:5678/api/works';
 
 // Sélection de la div avec la classe "gallery"
 const gallery = document.querySelector(".gallery");
-console.log(gallery)
 
 // Requete a l'API puis transformation de la réponse en json
-fetch(apiUrl)
+fetch(apiWorksUrl)
 
    .then(response => {
     return response.json();
@@ -49,13 +48,11 @@ fetch(apiUrl)
    .then(data => {
 
       // Affichage de touts les travaux
-      console.log(data) 
       displayElements(data);
 
                             // Filtre "Tous" //
       const filtreTous = document.querySelector(".filter-1");
       filtreTous.addEventListener("click", () => {
-         console.log("coucou")
          displayElements(data);
       });
                             // Filtre Objets //

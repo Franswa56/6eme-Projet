@@ -33,7 +33,7 @@ function displayModalElements(elements) {
 const modalGallery = document.querySelector(".modal-gallery");
 
 // Requete a l'API puis transformation de la réponse en json
-fetch(apiUrl)
+fetch("http://localhost:5678/api/works")
 
    .then(response => {
     return response.json();
@@ -168,14 +168,14 @@ function getFormData() {
    const formData = new FormData();
 
    const fileInput = form.querySelector("[name=upfile]");
-   if (fileInput.files.length > 0) {
+   
        formData.append('image', fileInput.files[0]);
-   }
+   
    
    formData.append('title', form.querySelector("[name=title]").value);
    formData.append('category',form.querySelector("[name=category]").value); 
 
-   console.log(formData)
+   
    return formData;
 
   
@@ -191,8 +191,8 @@ function getFormData() {
 const imagePreview = document.querySelector(".add-pics-preview");
 
 inputButton.addEventListener("change", function(event) {
-    console.log("File input changed");
-    // Ici, vous pouvez ajouter le code pour afficher l'aperçu de l'image
+
+
 });
 
 

@@ -62,7 +62,16 @@ body {
 }
 
 header {
-	padding-top: 30px;
+
+}
+
+.login {
+	display: block;
+}
+
+.logout {
+	display: none;
+	cursor: pointer;
 }
 
 .edit {
@@ -73,7 +82,6 @@ header {
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
-	position: fixed;
 	top: 0;
 	
 }
@@ -299,7 +307,7 @@ header {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 40px 0
 }
 section {
 	margin: 50px 0

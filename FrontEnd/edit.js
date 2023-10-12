@@ -9,6 +9,19 @@ if (token) {
 
     let modifyButton = document.querySelector(".modify");
     modifyButton.style.display = "inline";
-} else {
 
-}
+    let loginButton = document.querySelector(".login")
+    loginButton.style.display = "none";
+
+    let logoutButton = document.querySelector(".logout");
+    logoutButton.style.display = "block";
+};
+
+// Deconnexion utilisateur
+
+const logoutButton = document.querySelector(".logout");
+
+logoutButton.addEventListener("click",() => {
+   localStorage.clear();
+   window.location.href = 'index.html';
+});

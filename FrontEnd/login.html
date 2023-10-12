@@ -12,17 +12,19 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-<header>
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
+	<div class="main-container">
+	<header>
+        <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+        <nav>
+          <ul>
+            <li>projets</li>
+            <li>contact</li>
+            <a href="/FrontEnd/login.html" class="login"><li>login</li></a>
+            <a class="logout"><li>logout</li></a>
+            <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+          </ul>
+        </nav>
+      </header>
 <main>
     <h1 class="form-title">Log in</h1>
     <form class="form-connexion">
@@ -37,4 +39,5 @@
         <input type="submit" value="Se connecter" class="form-button">
         <a href="#" class="form-lien">Mot de passe oublié</a>
     </form>
+</div>
 </main>

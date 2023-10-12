@@ -211,7 +211,7 @@ inputButton.addEventListener("change", function(event) {
               
 function deleteWork(event) {
 
-   event.preventDefault();
+   //event.preventDefault();
  
 // recupération de l'id du travail grace au data-id de l'icone
    const workId = event.target.dataset.id

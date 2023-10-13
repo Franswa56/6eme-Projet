@@ -205,6 +205,11 @@ function fetchAndUpdateGallery() {
           body: data
 })
 .then (() => {fetchAndUpdateGallery()})
+
+// Vider le formulaire
+document.querySelector(".modal-form").reset();
+document.querySelector(".add-pics-preview").style.display = "none"
+
 modal.style.display = "none"
 const apiWorksUrl = 'http://localhost:5678/api/works';
 });

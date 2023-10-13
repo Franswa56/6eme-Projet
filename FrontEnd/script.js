@@ -1,6 +1,6 @@
  // Fonction d'affichage dans la gallery //
 
- function displayElements(elements) {
+ export function displayElements(elements) {
 
    gallery.innerHTML = "";
    
@@ -28,6 +28,27 @@
       gallery.appendChild(article)      
 });
 }
+      // Actualisation de la page d'accueil en temps réel
+
+
+// Ajout d'un travail
+function fetchAndUpdateGallery() {
+   fetch(apiWorksUrl)
+       .then(response => response.json())
+       .then(data => {
+           displayElements(data);
+       });
+}
+const modal = document.querySelector(".modal")
+modal.addEventListener('hidden', function() {
+   fetchAndUpdateGallery();
+   console.log("hello");
+});
+if (modal.style.display === "none") {
+   fetchAndUpdateGallery()
+   console.log("hello")
+}
+ 
 
 
 
@@ -37,6 +58,7 @@ const apiWorksUrl = 'http://localhost:5678/api/works';
 const gallery = document.querySelector(".gallery");
 
 // Requete a l'API puis transformation de la réponse en json
+
 fetch(apiWorksUrl)
 
    .then(response => {
@@ -50,6 +72,13 @@ fetch(apiWorksUrl)
       // Affichage de touts les travaux
       displayElements(data);
 
+      const addForm = document.querySelector(".modal-form");
+      const workUpdate = document.getElementById("submitButton")
+ 
+
+
+
+
                             // Filtre "Tous" //
       const filtreTous = document.querySelector(".filter-1");
       filtreTous.addEventListener("click", () => {
@@ -57,7 +86,7 @@ fetch(apiWorksUrl)
       });
                             // Filtre Objets //
       // Filtre les travaux au clique
-      filtreObjet = document.querySelector(".filter-2")
+      const filtreObjet = document.querySelector(".filter-2")
       filtreObjet.addEventListener("click", () => {         
    
          const filteredPieces = data.filter((piece) => piece.category.name === "Objets");
@@ -70,7 +99,7 @@ fetch(apiWorksUrl)
 
                             // Filtre Appartements //
       // Filtre les travaux au clique
-         filtreAppartements = document.querySelector(".filter-3")
+         const filtreAppartements = document.querySelector(".filter-3")
       filtreAppartements.addEventListener("click", () => {         
    
          const filteredPieces = data.filter((piece) => piece.category.name === "Appartements");
@@ -81,7 +110,7 @@ fetch(apiWorksUrl)
 
                         // Filtre Hotels & restaurants //
       // Filtre les travaux au clique
-      filtreHotel = document.querySelector(".filter-4")
+      const filtreHotel = document.querySelector(".filter-4")
       filtreHotel.addEventListener("click", () => {         
    
          const filteredPieces = data.filter((piece) => piece.category.name === "Hotels & restaurants");
@@ -91,6 +120,8 @@ fetch(apiWorksUrl)
 
 });
 });
+
+
 
 
       

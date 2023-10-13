@@ -1,3 +1,4 @@
+import { displayElements } from "./script.js";
 function displayModalElements(elements) {
    modalGallery.innerHTML = "";
    elements.forEach(element => {
@@ -180,20 +181,18 @@ function getFormData() {
 
   
 }
+const apiWorksUrl = 'http://localhost:5678/api/works';
+function fetchAndUpdateGallery() {
+    fetch(apiWorksUrl)
+        .then(response => response.json())
+        .then(data => {
+            displayElements(data);
+        });
+}
  
    document.getElementById("submitButton").addEventListener("click", function(event) {
       event.preventDefault();
       const data = getFormData();
-
-// lecture du fichier pour l'aperçu de l'image
-
-// Aperçu de l'image
-const imagePreview = document.querySelector(".add-pics-preview");
-
-inputButton.addEventListener("change", function(event) {
-
-
-});
 
 
 // Envoi du nouveau travail
@@ -204,14 +203,17 @@ inputButton.addEventListener("change", function(event) {
               'Authorization': `Bearer ${localStorage.getItem("authToken")}`
           },
           body: data
-});
+})
+.then (() => {fetchAndUpdateGallery()})
+modal.style.display = "none"
+const apiWorksUrl = 'http://localhost:5678/api/works';
 });
 
                //Suppression d'un Travail au click sur l'icone//
               
 function deleteWork(event) {
 
-   //event.preventDefault();
+   event.preventDefault();
  
 // recupération de l'id du travail grace au data-id de l'icone
    const workId = event.target.dataset.id
@@ -232,4 +234,8 @@ function deleteWork(event) {
             console.error('Erreur lors de la suppression du travail', response.statusText);
         }
     })
+
+    .then (() => {fetchAndUpdateGallery()});
 }
+
+// Suppression d'un travail

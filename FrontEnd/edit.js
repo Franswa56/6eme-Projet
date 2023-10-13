@@ -15,6 +15,9 @@ if (token) {
 
     let logoutButton = document.querySelector(".logout");
     logoutButton.style.display = "block";
+
+    let header = document.querySelector(".index-header");
+    header.style.paddingTop = "50px"
 };
 
 // Deconnexion utilisateur

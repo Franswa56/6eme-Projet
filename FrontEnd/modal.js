@@ -33,35 +33,40 @@ function displayModalElements(elements) {
 // Sélection de la div avec la classe "gallery"
 const modalGallery = document.querySelector(".modal-gallery");
 
-// Requete a l'API puis transformation de la réponse en json
-fetch("http://localhost:5678/api/works")
+// Fonction pour récupérer les données
+function fetchDataAndUpdateModal() {
+    // Requête à l'API
+    fetch("http://localhost:5678/api/works")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            // Utilisation des données ici
+            displayModalElements(data);
+        })
+        .catch(error => {
+            console.error('Une erreur est survenue lors de la récupération des données:', error);
+        });
+}
 
-   .then(response => {
-    return response.json();
+// Ouvrir la Modal
+const firstModal = document.querySelector(".modal-container");
+const secondModal = document.querySelector(".second-modal-container");
+const editButton = document.querySelector(".modify");
+const modal = document.querySelector(".modal");
 
-   })
-
-
-   .then(data => {
-
-      // Affichage de touts les travaux 
-      displayModalElements(data);
-   });
-
-
-               // Ouvrir la Modal //
-   const firstModal = document.querySelector(".modal-container");
-   const secondModal = document.querySelector(".second-modal-container");
-   const editButton = document.querySelector(".modify");
-   const modal = document.querySelector(".modal");
-
-   editButton.addEventListener("click",(event)=> {
+editButton.addEventListener("click", (event) => {
     console.log("modalclick")
     event.stopPropagation();
+
+    // Appeler la fonction pour mettre à jour la modal
+    fetchDataAndUpdateModal();
+
     modal.style.display = "flex";
     secondModal.style.display = "none";
     firstModal.style.display = "flex";
 });
+
               // Fermer la Modale //
 
 // grace a la croix

@@ -30,28 +30,6 @@
 }
       // Actualisation de la page d'accueil en temps réel
 
-
-// Ajout d'un travail
-function fetchAndUpdateGallery() {
-   fetch(apiWorksUrl)
-       .then(response => response.json())
-       .then(data => {
-           displayElements(data);
-       });
-}
-const modal = document.querySelector(".modal")
-modal.addEventListener('hidden', function() {
-   fetchAndUpdateGallery();
-   console.log("hello");
-});
-if (modal.style.display === "none") {
-   fetchAndUpdateGallery()
-   console.log("hello")
-}
- 
-
-
-
 const apiWorksUrl = 'http://localhost:5678/api/works';
 
 // Sélection de la div avec la classe "gallery"
